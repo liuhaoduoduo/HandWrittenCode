@@ -6,12 +6,17 @@ fn bubble_sort(arr: &mut [i32]) {
   let n=arr.len();
   //外层循环控制比较的轮数
   for i in 0..n{
+    let mut swapped = false;
     //内层循环控制每一轮比较的次数，由于每次比较之后数组的末尾都会形成一个有序的部分，所以每一轮比较的次数都会减少
     for j in 0..n-i-1{
         if arr[j]>arr[j+1]{
             // 交换 arr[j+1] 和 arr[j]
-            arr.swap(j,j+1)
+            arr.swap(j,j+1);
+            swapped = true;
         }
+    }
+    if !swapped{
+      break;
     }
   }
 }

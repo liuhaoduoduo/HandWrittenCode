@@ -5,8 +5,12 @@
  */
 class BubbleSort {
     public static void bubbleSort(int[] arr) {
+        if (arr == null || arr.length <= 1) {
+            return;
+        }
         // 外层循环控制比较的轮数
         for (int i = 0; i < arr.length; i++) {
+            boolean swapped = false;
             // 内层循环控制每一轮比较的次数，每一轮比较后数组的末尾就会成为有序状态，所以每一轮比较的次数都会减少
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
@@ -14,6 +18,11 @@ class BubbleSort {
                     int temp = arr[j];
                     arr[j] = arr[j + 1];
                     arr[j + 1] = temp;
+                    swapped = true;
+                }
+                //如果某一轮比较没有发生交换，说明数组已经有序，后续的比较就没有必要做了。
+                if (!swapped) {
+                    break;
                 }
             }
         }
