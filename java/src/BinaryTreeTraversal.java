@@ -1,3 +1,6 @@
+/**
+ * 二叉树构造及三种遍历
+ */
 class BinaryTreeTraversal {
     // 树节点上的数值
     private static int value = 0;
