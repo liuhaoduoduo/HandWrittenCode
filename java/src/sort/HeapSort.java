@@ -1,3 +1,4 @@
+package sort;
 /**
  * 堆排序
  * 堆是一种特殊的完全二叉树，分为大根堆和小根堆。大根堆的每个节点的值都大于或等于其左右子节点的值，小根堆则相反，每个节点的值都小于或等于其左右子节点的值。
@@ -16,7 +17,7 @@
 public class HeapSort {
     public static void main(String[] args) {
         int[] arr = { 25, 12, 36, 4, 18, 22, 3, 9, 15, 28 };
-        HeapSort(arr);
+        heapSort(arr);
         // 输出排序后的数组
         for (int i = 0; i < arr.length; i++) {
             if (i > 0) {
@@ -26,7 +27,7 @@ public class HeapSort {
         }
     }
 
-    private static void HeapSort(int[] arr) {
+    private static void heapSort(int[] arr) {
         // 数组规模，在堆排序过程中堆的规模会不断的缩小。
         int n = arr.length;
         // 将原始数组调整为大根堆，循环起始元素元素为第一个非叶子结点，终点为树根结点
