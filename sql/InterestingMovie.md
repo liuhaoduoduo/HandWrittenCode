@@ -22,7 +22,7 @@
 * 解题思路：使用AND连接两个筛选条件，即description!='boring'和mod(id,2)=1，然后用ORDER BY rating DESC进行降序排列。
 * 查询语句
 ```
-select id,movie,description,rating from cinema where description != 'boring' order by rating DESC;
+select id,movie,description,rating from cinema where description != 'boring' AND mod(id,2) = 1 order by rating DESC;
 ```
 * 测试环境初始代码
 
