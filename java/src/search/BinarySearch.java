@@ -49,6 +49,7 @@ public class BinarySearch {
      * 逻辑冗余：代码中 if (left==right&&arr[left]!=objVal) 这个判断条件是多余的。在正常的二分查找逻辑中，当 left >
      * right 时就可以确定目标值不存在，不需要额外判断 left == right 且元素不等于目标值的情况。
      */
+    @SuppressWarnings("unused")
     private static int binarySearchByRecursion(int[] arr, int left, int right, int objVal) {
         // 当左右指针的索引值相等，且指向位置不等于目标值时，说明数组中并不存在要查找的值，直接返回特殊标识：-1
         if (left > right && arr[left] != objVal) {
