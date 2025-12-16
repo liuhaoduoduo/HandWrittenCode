@@ -9,10 +9,16 @@
  * 2、到map中找key为4的元素，结果当然是找不到。此时将6作为key，6作为value放入到map中。
  * 3、假设第二个元素是4，计算后与目标差值为6。
  * 4、到map中找key为6的元素，结果发现可以找到。那将map中的数和当前数拼接成一个数组返回即可。
+ * 扩展
+ * 如果数组中有多个满足条件的数，如何配对输出？@美团*刘广勇
+ * 还是以目标数为10举例，待查找的数组为6644
+ * 此时需要修改map中存储的内容，需要改为本数为key，索引列表为value的形式。在遍历时，优先取列表头不的索引进行配对
  */
 package integration;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TwoSum {
@@ -34,7 +40,23 @@ public class TwoSum {
         //循环正常结束，说明数组中没有符合要求的数。返回一个兜底逻辑。
         return new int[]{};
     }
-
+    //本实现支持有多个复合条件的数，且索引相对位置是配对的。即当01和23都满足条件是，返回的结果是02和13
+    public static List<int[]> twoSum2(int[] nums, int target){
+        List<int[]> result=new ArrayList<>();
+        Map<Integer,List<Integer>> numMap= new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            int temp = target-nums[i];
+            if (numMap.containsKey(temp)) {
+                result.add(new int[]{numMap.get(temp).get(0),i});
+                numMap.get(temp).remove(0);
+                continue;
+            }
+            List<Integer> indexList=numMap.getOrDefault(nums[i], new ArrayList());
+            indexList.add(i);
+            numMap.put(nums[i], indexList);
+        }
+        return result;
+    }
     public static void main(String[] args) {
         //待查找的数组，是否有序无所谓
         int[] nums = {3, 14, 8, 27, 10, 19, 5, 22, 6, 11};
@@ -43,10 +65,25 @@ public class TwoSum {
         //调用算法取得结果
         int[] result = twoSum(nums, target);
         //如果结果中有两个元素说明找到符合要求的数，否则就是未找到
-        if (result.length == 2) {
-            System.out.println("Indices: [" + result[0] + ", " + result[1] + "]");
-        } else {
-            System.out.println("No two numbers sum up to the target.");
+        // if (result.length == 2) {
+        //     System.out.println("Indices: [" + result[0] + ", " + result[1] + "]");
+        // } else {
+        //     System.out.println("No two numbers sum up to the target.");
+        // }
+
+
+         //待查找的数组，是否有序无所谓
+        nums = new int[]{6,6,4,4};
+        //目标数
+        target = 10;
+        //调用算法取得结果
+        List<int[]> result2 = twoSum2(nums, target);
+        for(int i=0;i<result2.size();i++){
+            int[] result2Temp = result2.get(i);
+            for(int j=0;j<result2Temp.length;j++){
+                System.out.print(result2Temp[j]);
+            }
+            System.out.print("\n");
         }
     }
 }
