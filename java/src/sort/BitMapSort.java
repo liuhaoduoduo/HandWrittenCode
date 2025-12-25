@@ -10,6 +10,7 @@ public class BitMapSort {
         int bitmap = 0;
         // 将每个数字映射到bitmap
         for (int num : nums) {
+            //值为1时不需要进行移位操作，所以此处计算移位位数时需要做减一
             bitmap |= (1 << (num - 1));
         }
         // 输出排序后的结果
