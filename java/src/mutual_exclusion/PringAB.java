@@ -23,7 +23,7 @@ public class PringAB {
 				}
 			}
 			System.out.print("A");
-			aMark|=1;
+			aMark=1;
 			notifyAll();
 		}
 
@@ -38,7 +38,7 @@ public class PringAB {
 				}
 			}
 			System.out.print("B");
-			aMark&=0;
+			aMark=0;
 			notifyAll();
 		}
 	}
