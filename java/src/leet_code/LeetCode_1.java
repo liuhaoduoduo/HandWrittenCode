@@ -14,14 +14,14 @@
  * 还是以目标数为10举例，待查找的数组为6644
  * 此时需要修改map中存储的内容，需要改为本数为key，索引列表为value的形式。在遍历时，优先取列表头不的索引进行配对
  */
-package integration;
+package leet_code;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class TwoSum {
+public class LeetCode_1 {
     //本实现返回的是符合要求的数的下标
     public static int[] twoSum(int[] nums, int target) {
         //创建一个map，用来保存便利过的数
