@@ -1,9 +1,10 @@
-package sliding_window;
+package leet_code;
 /**
+ * 无重复字符的最长子串
  * 寻找字符串中最长的不含重复字符的子串。
  * 使用滑动窗口技术，通过两个指针维护一个当前不含重复字符的子串，并动态调整窗口大小以找到最长子串。
  */
-public class LongestUniqueSubstring {
+public class LeetCode_3 {
     public static String longestUniqueSubstring(String s) {
         int left = 0, right = 0, maxLen = 0, start = 0;
         java.util.Set<Character> set = new java.util.HashSet<>();
