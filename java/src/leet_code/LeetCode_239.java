@@ -25,6 +25,7 @@ public class LeetCode_239 {
     public static int[] maxSlidingWindow(int[] nums, int k){
         if (nums == null || k <= 0) return new int[0];
         int n = nums.length;
+        // n-k+1 个窗口，实例，长度为3的数组，如果窗口为3，那么只有1个窗口；如果窗口长度为2，则有2个窗口，分别是[0,1],[1,2]
         int[] res = new int[n - k + 1];
         Deque<Integer> deque = new LinkedList<>();
             for (int i = 0; i < n; i++) {
