@@ -21,6 +21,9 @@ public class LeetCode_153 {
         public static int findMin(int[] nums) {
             int left = 0, right = nums.length - 1;
             while (left < right) {
+                //此处必须是 left + (right - left) / 2，防止left+right溢出。
+                //直接使用(right-left)/2求出的是2个指针的中间距离，不是真正的中位数下标
+                //例如，如果 left = 3, right = 7，(right - left) / 2 = (7 - 3) / 2 = 2，但 mid 应该是 3 + 2 = 5
                 int mid = left + (right - left) / 2;
                 if (nums[mid] > nums[right]) {
                     left = mid + 1;
